@@ -24,7 +24,7 @@ public class RectangleShapeTest
     @Test
     void toThrowExceptionWhenEitherOfValuesNegative()
     {
-        assertThrows(ArithmeticException.class,() -> rectangleObject.area(-2,-2));
+        assertThrows(IllegalArgumentException.class,() -> rectangleObject.area(-2,-2));
     }
 
 

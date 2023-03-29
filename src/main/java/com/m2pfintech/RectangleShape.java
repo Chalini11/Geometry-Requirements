@@ -1,7 +1,15 @@
 package com.m2pfintech;
 
 public class RectangleShape {
-    public int area(int length, int breadth)
+
+    private int length,breadth;
+
+    RectangleShape(int length, int breadth)
+    {
+        this.length=length;
+        this.breadth=breadth;
+    }
+    public int area()
     {
         if(length < 0 || breadth < 0)
             throw new IllegalArgumentException();
@@ -9,22 +17,19 @@ public class RectangleShape {
 
     }
 
-    public int perimeter(int length, int breadth)
+    public int perimeter()
     {
         if(length < 0 || breadth < 0)
             throw new IllegalArgumentException();
         return 2*(length+breadth);
     }
-
-
-    public int area(int input)
+    public static RectangleShape createSquare(int side)
     {
-        return area(input,input);
+        return new RectangleShape(side,side);
     }
 
-    public int perimeter(int input)
-    {
-        return perimeter(input,input);
+
+    ;
     }
-}
+
 

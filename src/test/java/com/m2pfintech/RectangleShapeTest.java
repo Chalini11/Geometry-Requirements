@@ -4,28 +4,30 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-
+import static com.m2pfintech.RectangleShape.createSquare;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RectangleShapeTest
 {
-    RectangleShape rectangleObject = new RectangleShape();
-    RectangleShape squareObject = new RectangleShape();
+    RectangleShape rectangleObject2x10 = new RectangleShape(2,10);
+    RectangleShape rectangleObjectNegative = new RectangleShape(-2,-2);
+    RectangleShape squareObject = createSquare(2);
+    RectangleShape squareObjectNegative = createSquare(-2);
     @Nested
     class RectangleArea {
         @Test
         void toReturnAreaValueTwentyWhenGivenInputsTwoAndTen() {
             int expectedValue = 20;
 
-            int actualValue = rectangleObject.area(2, 10);
+            int actualValue = rectangleObject2x10.area();
 
             assertEquals(expectedValue, actualValue);
         }
 
         @Test
         void toThrowExceptionWhenEitherOfInputsAreNegativeWhileFindingArea() {
-            assertThrows(IllegalArgumentException.class, () -> rectangleObject.area(-2, -2));
+            assertThrows(IllegalArgumentException.class, () -> rectangleObjectNegative.area());
         }
 
     }
@@ -37,14 +39,14 @@ public class RectangleShapeTest
         void toReturnPerimeterValueTwentyFourWhenGivenInputsTwoAndTen() {
             int expectedValue = 24;
 
-            int actualValue = rectangleObject.perimeter(2, 10);
+            int actualValue = rectangleObject2x10.perimeter();
 
             assertEquals(expectedValue, actualValue);
         }
 
         @Test
         void toThrowExceptionWhenEitherOfInputsAreNegativeWhileFindingPerimeter() {
-            assertThrows(IllegalArgumentException.class, () -> rectangleObject.perimeter(-2, -2));
+            assertThrows(IllegalArgumentException.class, () -> rectangleObjectNegative.perimeter());
         }
     }
 
@@ -55,14 +57,14 @@ public class RectangleShapeTest
         void toReturnAreaValueFourWhenGivenInputTwo() {
             int expectedValue = 4;
 
-            int actualValue = squareObject.area(2);
+            int actualValue = squareObject.area();
 
             assertEquals(expectedValue, actualValue);
         }
 
         @Test
         void toThrowExceptionWhenInputsIsNegativeWhileFindingArea() {
-            assertThrows(IllegalArgumentException.class, () -> squareObject.area(-2));
+            assertThrows(IllegalArgumentException.class, () -> squareObjectNegative.area());
         }
 
         @Nested
@@ -73,14 +75,14 @@ public class RectangleShapeTest
             void toReturnAreaValueFourWhenGivenInputTwo() {
                 int expectedValue = 8;
 
-                int actualValue = squareObject.perimeter(2);
+                int actualValue = squareObject.perimeter();
 
                 assertEquals(expectedValue, actualValue);
             }
 
             @Test
             void toThrowExceptionWhenInputsIsNegativeWhileFindingArea() {
-                assertThrows(IllegalArgumentException.class, () -> squareObject.perimeter(-2));
+                assertThrows(IllegalArgumentException.class, () -> squareObjectNegative.perimeter());
             }
         }
 

@@ -15,5 +15,16 @@ public class RectangleShape {
             throw new IllegalArgumentException();
         return 2*(length+breadth);
     }
+
+
+    public int area(int input)
+    {
+        return area(input,input);
+    }
+
+    public int perimeter(int input)
+    {
+        return perimeter(input,input);
+    }
 }
 

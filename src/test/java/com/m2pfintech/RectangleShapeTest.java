@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class RectangleShapeTest
 {
     RectangleShape rectangleObject = new RectangleShape();
-
+    RectangleShape squareObject = new RectangleShape();
     @Nested
     class RectangleArea {
         @Test
@@ -24,7 +24,7 @@ public class RectangleShapeTest
         }
 
         @Test
-        void toThrowExceptionWhenEitherOfInputsAreNegative() {
+        void toThrowExceptionWhenEitherOfInputsAreNegativeWhileFindingArea() {
             assertThrows(IllegalArgumentException.class, () -> rectangleObject.area(-2, -2));
         }
 
@@ -43,8 +43,46 @@ public class RectangleShapeTest
         }
 
         @Test
-        void toThrowExceptionWhenEitherOfInputsAreNegative() {
-            assertThrows(IllegalArgumentException.class, () -> rectangleObject.area(-2, -2));
+        void toThrowExceptionWhenEitherOfInputsAreNegativeWhileFindingPerimeter() {
+            assertThrows(IllegalArgumentException.class, () -> rectangleObject.perimeter(-2, -2));
         }
+    }
+
+    @Nested
+    class SquareArea
+    {
+        @Test
+        void toReturnAreaValueFourWhenGivenInputTwo() {
+            int expectedValue = 4;
+
+            int actualValue = squareObject.area(2);
+
+            assertEquals(expectedValue, actualValue);
+        }
+
+        @Test
+        void toThrowExceptionWhenInputsIsNegativeWhileFindingArea() {
+            assertThrows(IllegalArgumentException.class, () -> squareObject.area(-2));
+        }
+
+        @Nested
+
+        class SquarePerimeter
+        {
+            @Test
+            void toReturnAreaValueFourWhenGivenInputTwo() {
+                int expectedValue = 8;
+
+                int actualValue = squareObject.perimeter(2);
+
+                assertEquals(expectedValue, actualValue);
+            }
+
+            @Test
+            void toThrowExceptionWhenInputsIsNegativeWhileFindingArea() {
+                assertThrows(IllegalArgumentException.class, () -> squareObject.perimeter(-2));
+            }
+        }
+
     }
 }
